@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         SceneManager.LoadScene("DemoScene");
     }
 
-    public void LoadCreditScene()
+    public void LoadCreditsScene()
     {
         SceneManager.LoadScene("CreditScene");
     }

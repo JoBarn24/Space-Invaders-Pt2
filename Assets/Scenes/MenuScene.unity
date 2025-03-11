@@ -493,6 +493,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09dc61003bd6af94e875e34e5cc18a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1020838880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1020838881}
+  m_Layer: 0
+  m_Name: Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1020838881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020838880}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -228.27838, y: -423.10077, z: 3203.1223}
+  m_LocalScale: {x: 1.9133034, y: 1.9133034, z: 1.9133034}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2045382247}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1079374155
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +826,7 @@ GameObject:
   - component: {fileID: 1525584947}
   - component: {fileID: 1525584946}
   - component: {fileID: 1525584945}
-  - component: {fileID: 1525584944}
+  - component: {fileID: 1525584948}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -823,18 +854,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.000020981, y: -217.53}
   m_SizeDelta: {x: 689.948, y: 156.324}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1525584944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525584942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09dc61003bd6af94e875e34e5cc18a65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1525584945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -879,9 +898,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1525584944}
+      - m_Target: {fileID: 1525584948}
         m_TargetAssemblyTypeName: NewMonoBehaviourScript, Assembly-CSharp
-        m_MethodName: LoadCreditScene
+        m_MethodName: LoadCreditsScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -929,6 +948,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525584942}
   m_CullTransparentMesh: 1
+--- !u!114 &1525584948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525584942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09dc61003bd6af94e875e34e5cc18a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1708267809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,6 +1391,7 @@ RectTransform:
   - {fileID: 1708267810}
   - {fileID: 959058954}
   - {fileID: 1525584943}
+  - {fileID: 1020838881}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
