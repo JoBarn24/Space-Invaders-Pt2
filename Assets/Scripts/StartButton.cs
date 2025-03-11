@@ -1,9 +1,15 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
-    public void DoSomething()
+    public void LoadGameScene()
     {
-        Debug.Log("I have been clicked!");
+        SceneManager.LoadScene("DemoScene");
+    }
+
+    public void LoadCreditScene()
+    {
+        SceneManager.LoadScene("CreditScene");
     }
 }
