@@ -12,17 +12,13 @@ public class EnemyGroupController : MonoBehaviour
     public int cols = 5;
     public float speed = 1f;
     public float speedIncreaseRate = 0.1f;
-    public delegate void GameOver();
-    public static event GameOver OnGameOver;
 
     private Vector3 direction = Vector3.right;
     private int totalEnemies = 0;
-    private bool gameOver = false;
 
     void Start()
     {
         Enemy.OnEnemyDied += HandleEnemyDeath;
-        GameManagerScript.OnRestartGame += DestroyEnemies;
         SpawnEnemies();
     }
 
@@ -45,10 +41,9 @@ public class EnemyGroupController : MonoBehaviour
             AdvanceRow();
         }
 
-        if (totalEnemies <= 0 && !gameOver)
+        if (totalEnemies <= 0)
         {
-            gameOver = true;
-            OnGameOver?.Invoke();
+            SceneManager.LoadScene("CreditScene");
         }
     }
 
@@ -66,19 +61,11 @@ public class EnemyGroupController : MonoBehaviour
         speed += speedIncreaseRate;
         totalEnemies--;
         Debug.Log("Enemies Remaining: " + totalEnemies);
-
-        if (totalEnemies <= 0 && !gameOver)
-        {
-            gameOver = true;
-            OnGameOver?.Invoke();
-            SceneManager.LoadScene("CreditScene");
-        }
     }
 
     void OnDestroy()
     {
         Enemy.OnEnemyDied -= HandleEnemyDeath;
-        GameManagerScript.OnRestartGame -= DestroyEnemies;
     }
 
     void SpawnEnemies()
@@ -120,18 +107,5 @@ public class EnemyGroupController : MonoBehaviour
                 enemy.transform.parent = transform;
             }
         }
-
-        gameOver = false;
-    }
-
-    void DestroyEnemies()
-    {
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
-
-        SpawnEnemies();
     }
 }
-

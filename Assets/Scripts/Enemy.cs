@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
             }
             else if (CompareTag("Enemy2"))
             {
-                OnEnemyDied?.Invoke(20);
+                OnEnemyDied?.Invoke(25);
 
             }
             else if (CompareTag("Enemy3"))

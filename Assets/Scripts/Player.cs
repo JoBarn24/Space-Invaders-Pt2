@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
   void Start()
   {
     playerAnimator = GetComponent<Animator>();
-    GameManagerScript.OnRestartGame += RespawnPlayer;
   }
   
   void Update()
@@ -48,20 +47,6 @@ public class Player : MonoBehaviour
       
       //Destroy(shot, 3f);
     }
-  }
-
-  void OnDisable()
-  {
-    GameManagerScript.OnRestartGame -= RespawnPlayer;
-  }
-
-  void RespawnPlayer()
-  {
-    if (gameObject != null)
-    {
-      Destroy(gameObject);
-    }
-    Instantiate(playerPrefab, spawnPos.position, Quaternion.identity);
   }
   
   void OnCollisionEnter2D(Collision2D collision)
