@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyGroupController : MonoBehaviour
 {
@@ -70,6 +71,7 @@ public class EnemyGroupController : MonoBehaviour
         {
             gameOver = true;
             OnGameOver?.Invoke();
+            SceneManager.LoadScene("CreditScene");
         }
     }
 
