@@ -45,15 +45,20 @@ public class Player : MonoBehaviour
       GameObject shot = Instantiate(bulletPrefab, shootingOffset.position, Quaternion.identity); 
       Physics2D.IgnoreCollision(GetComponent<Collider2D>(), shot.GetComponent<Collider2D>());
       
-      //Destroy(shot, 3f);
+      Destroy(shot, 10f);
     }
   }
   
   void OnCollisionEnter2D(Collision2D collision)
   {
+    StartCoroutine(DeathAnimation());
     Destroy(collision.gameObject);
-    
-    Destroy(gameObject);
     OnPlayerDied?.Invoke();
+  }
+
+  IEnumerator DeathAnimation()
+  {
+    playerAnimator.SetTrigger("PlayerDeathTrigger");
+    yield return new WaitForSeconds(5f);
   }
 }

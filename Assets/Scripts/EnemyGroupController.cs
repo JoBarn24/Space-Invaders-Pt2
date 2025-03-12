@@ -99,12 +99,14 @@ public class EnemyGroupController : MonoBehaviour
             for (int col = 0; col < cols; col++)
             {
                 GameObject enemy = Instantiate(prefab, transform.position, Quaternion.identity);
-
+                
                 Vector3 position = rowPos;
                 position.x += col;
                 enemy.transform.localPosition = position;
-
                 enemy.transform.parent = transform;
+                
+                EnemyShoot enemyShoot = enemy.AddComponent<EnemyShoot>();
+                enemyShoot.shootingOffset = enemy.transform.Find("ShootingOffset");
             }
         }
     }
