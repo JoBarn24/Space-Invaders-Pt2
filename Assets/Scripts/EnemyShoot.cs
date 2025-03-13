@@ -6,17 +6,19 @@ public class EnemyShoot : MonoBehaviour
     public Transform shootingOffset;
     public float shootInterval = 2f;
     public float bulletSpeed = 5f;
-    public float shootChance = 0f; // Chance to shoot
     public bool canShoot = false;
 
     private float shootTimer = 0f;
 
+    Animator enemyAnimator;
+    
     void Start()
     {
         if (gameObject.CompareTag("Enemy4"))
         {
             canShoot = true;
             shootInterval = Random.Range(6f, 10f);
+            enemyAnimator = GetComponent<Animator>();
         }
         shootingOffset = transform.Find("ShootingOffset");
     }
@@ -43,6 +45,8 @@ public class EnemyShoot : MonoBehaviour
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             Vector2 direction = Vector2.down;
             rb.linearVelocity = direction * bulletSpeed;
+            
+            enemyAnimator.SetTrigger("EnemyShoot");
 
             Collider2D bulletCollider = bullet.GetComponent<Collider2D>();
             Physics2D.IgnoreCollision(bulletCollider, GameObject.FindWithTag("Enemy1").GetComponent<Collider2D>());

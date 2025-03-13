@@ -6,8 +6,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   public GameObject bulletPrefab;
-  public GameObject playerPrefab;
-  public Transform spawnPos;
   public Transform shootingOffset;
   public float input = 0f;
   public float speed = 1f;
@@ -15,10 +13,12 @@ public class Player : MonoBehaviour
   public static event PlayerDied OnPlayerDied;
 
   Animator playerAnimator;
+  private AudioSource audioSource;
   
   void Start()
   {
     playerAnimator = GetComponent<Animator>();
+    audioSource = GetComponent<AudioSource>();
   }
   
   void Update()
@@ -45,20 +45,22 @@ public class Player : MonoBehaviour
       GameObject shot = Instantiate(bulletPrefab, shootingOffset.position, Quaternion.identity); 
       Physics2D.IgnoreCollision(GetComponent<Collider2D>(), shot.GetComponent<Collider2D>());
       
-      Destroy(shot, 10f);
+      Destroy(shot, 5f);
     }
   }
   
   void OnCollisionEnter2D(Collision2D collision)
   {
+    speed = 0f;
     StartCoroutine(DeathAnimation());
     Destroy(collision.gameObject);
-    OnPlayerDied?.Invoke();
   }
 
   IEnumerator DeathAnimation()
   {
     playerAnimator.SetTrigger("PlayerDeathTrigger");
-    yield return new WaitForSeconds(5f);
+    audioSource.PlayOneShot(audioSource.clip);
+    yield return new WaitForSeconds(3f);
+    OnPlayerDied?.Invoke();
   }
 }
